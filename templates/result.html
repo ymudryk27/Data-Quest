@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Results — {{ ch.title }}</h2>
+<p>Status: {% if ok %}<strong>All tests passed</strong>{% else %}<strong>Failed</strong>{% endif %}</p>
+<p>Time: {{ '%.3f'|format(duration) }}s</p>
+<pre class="report">{{ report }}</pre>
+<a class="back" href="/challenge/{{ ch.id }}">Back to

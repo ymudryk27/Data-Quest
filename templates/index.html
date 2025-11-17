@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>Pick a mission, write Python on the left, pass the tests on the right. No Pandas needed — just NumPy and core Python.
+</p>
+<div class="grid">
+    {% for ch in challenges %}
+    <a class="card" href="{{ url_for('challenge_page', cid=ch.id) }}">
+        <h3>{{ ch.title }}</h3>
+        <p>{{ ch.prompt }}</p>
+        {% if ch.id in prog.cleared %}
+        <span class="badge ok">Cleared ✓</span>
+        {% if prog.best_times.get(ch.id) %}
+        <span class="time">Best: {{ prog.best_times[ch.id] }}s</span>
+        {% endif %}
+        {% endif %}
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

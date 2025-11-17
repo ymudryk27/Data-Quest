@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ ch.title }}</h2>
+<p>{{ ch.prompt }}</p>
+<details>
+    <summary>Hint</summary>
+    <pre>{{ ch.solution_hint }}</pre>
+</details>
+<form method="post" action="{{ url_for('submit', cid=ch.id) }}">
+    <textarea name="code" rows="18" spellcheck="false">{{ ch.starter }}</textarea>
+    <div class="actions">
+        <button type="submit">Run Tests</button>
+    </div>
+</form>
+{% endblock %}
